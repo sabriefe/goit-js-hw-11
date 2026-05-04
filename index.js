@@ -1,0 +1,11 @@
+import{S as c,i as l}from"./assets/vendor-BrddEoy-.js";(function(){const r=document.createElement("link").relList;if(r&&r.supports&&r.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))s(t);new MutationObserver(t=>{for(const e of t)if(e.type==="childList")for(const n of e.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&s(n)}).observe(document,{childList:!0,subtree:!0});function o(t){const e={};return t.integrity&&(e.integrity=t.integrity),t.referrerPolicy&&(e.referrerPolicy=t.referrerPolicy),t.crossOrigin==="use-credentials"?e.credentials="include":t.crossOrigin==="anonymous"?e.credentials="omit":e.credentials="same-origin",e}function s(t){if(t.ep)return;t.ep=!0;const e=o(t);fetch(t.href,e)}})();const u=new c(".list a",{captionsData:"alt",captionDelay:250,nav:!0,close:!0,showCounter:!0}),m="https://pixabay.com/api/?",a=document.querySelector(".list"),p=new URLSearchParams({key:"55680112-662c4999a1e7b09f15363a282",image_type:23,orientation:"horizontal",safesearch:!0}),g=document.querySelector(".form");g.addEventListener("submit",i=>{i.preventDefault(),a.innerHTML="<li>Loading images, please wait...</li>";const r=i.target.search.value,o=m+p.toString()+"&q="+r;fetch(o).then(s=>s.json()).then(s=>s.hits).then(s=>{const t=s.map(e=>`<li class="listItem"><a href="${e.largeImageURL}"><img class='image' src="${e.webformatURL}" data-source="${e.largeImageURL}" alt="${e.tags}"/></a>
+                <ul class="subList">
+                <li class="subListItem"><p>Likes</p><p>${e.likes}</p></li>
+                <li class="subListItem"><p>Views</p><p>${e.views}</p></li>
+                <li class="subListItem"><p>Comments</p><p>${e.comments}</p></li>
+                <li class="subListItem"><p>Comments</p><p>${e.downloads}</p></li>
+                </ul></li>`).join("");s.length===0&&l.show({message:`<div class='iconContainer'>
+              <svg class='icon'><use href='../img/warning.svg'/></svg>
+              <span class='message'>Sorry, there are no images matching<br>your search query.Please try again!</span>
+              </div>`,position:"topRight",messageColor:"white",backgroundColor:"rgba(239, 64, 64, 1)"}),a.innerHTML="",a.insertAdjacentHTML("beforeend",t),u.refresh()}).catch(s=>{console.log("Connection Error")}),i.target.search.value=""});
+//# sourceMappingURL=index.js.map
